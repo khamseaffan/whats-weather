@@ -3,7 +3,7 @@ const weatehrInfoCard = document.querySelector(".weather");
 let news = {
   fetchNewsReport: function (searchedCity) {
     console.log("Fetching Started");
-    let newsUrl = `https://newsapi.org/v2/everything?q=${searchedCity}&sortBy=popularity&apiKey=403af102e6e94d4f899f8d23cf8cb4e3`;
+    let newsUrl = `https://newsapi.org/v2/everything?q=${searchedCity}&sortBy=popularity&apiKey=<NEWSAPI.ORG KEY>`;
     fetch(newsUrl)
       .then((response) => response.json())
       .then((data) => this.loadNews(data));
@@ -33,7 +33,7 @@ let news = {
 };
 
 let weather = {
-  api_key: "6fabf0a356ff6bd0c36843891fe87692",
+  api_key: "<openweatherApp API_KEY>",
   fetchWeather: function (city) {
     if (!weatehrInfoCard.classList.contains("loading")) {
       weatehrInfoCard.classList.add("loading");
