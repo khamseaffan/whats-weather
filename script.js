@@ -1,14 +1,20 @@
-const weatehrInfoCard = document.querySelector(".weather");
+const weatherInfoCard = document.querySelector(".weather");
 
-let news = {
+let newsFetcher = {
+  randomFnc: () => {
+    console.log("Affan Khamse");
+  },
+
   fetchNewsReport: function (searchedCity) {
     console.log("Fetching Started");
+    document.querySelector(".newsSection").innerHTML = "<h4>Loading....</h4>";
     let newsUrl = `https://newsapi.org/v2/everything?q=${searchedCity}&sortBy=popularity&apiKey=403af102e6e94d4f899f8d23cf8cb4e3`;
     fetch(newsUrl)
       .then((response) => response.json())
-      .then((data) => this.loadNews(data));
+      .then((data) => newsFetcher.loadNews(data));
   },
-  loadNews: (data) => {
+  loadNews: function (data) {
+    console.log(data);
     news = "";
     for (let i = 0; i < 5; i++) {
       let { title, description, url, urlToImage } = data.articles[i];
@@ -28,6 +34,7 @@ let news = {
                 </div>
               </a>\n`;
     }
+    document.querySelector(".newsSection").innerHTML = "";
     document.querySelector(".newsSection").innerHTML = news;
   },
 };
@@ -35,8 +42,8 @@ let news = {
 let weather = {
   api_key: "6fabf0a356ff6bd0c36843891fe87692",
   fetchWeather: function (city) {
-    if (!weatehrInfoCard.classList.contains("loading")) {
-      weatehrInfoCard.classList.add("loading");
+    if (!weatherInfoCard.classList.contains("loading")) {
+      weatherInfoCard.classList.add("loading");
     }
     fetch(
       `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${this.api_key}`
@@ -61,27 +68,30 @@ let weather = {
     document.querySelector(".wind").textContent = `Wind Speed: ${speed} m/sec`;
     document.body.style.backgroundImage =
       "url(" + `https://source.unsplash.com/1600x900/?${name}` + ")";
-    weatehrInfoCard.classList.remove("loading");
-  },
-  handelClick: () => {
-    let searchedCity = document.querySelector(".search-bar").value;
-    if (!searchedCity) {
-      console.log("city Value to search not enterrd");
-      return;
-    }
-
-    weather.fetchWeather(searchedCity);
-    news.fetchNewsReport(searchedCity);
+    weatherInfoCard.classList.remove("loading");
   },
 };
 
+function handleClick() {
+  let searchedCity = document.querySelector(".search-bar").value;
+  if (!searchedCity) {
+    console.log("city Value to search not enterrd");
+    return;
+  }
+
+  weather.fetchWeather(searchedCity);
+  newsFetcher.randomFnc();
+  newsFetcher.fetchNewsReport(searchedCity);
+}
+
 document.querySelector(".search button").addEventListener("click", function () {
-  weather.handelClick();
+  location.reload();
+  handleClick();
 });
 
 // document.addEventListener("keydown", (event) => {
 //   if (event.key == "Enter") {
-//     weather.handelClick();
+//     weather.handleClick();
 //   }
 // });
 
@@ -89,7 +99,7 @@ document
   .querySelector(".search-bar")
   .addEventListener("keyup", function (event) {
     if (event.key == "Enter") {
-      weather.handelClick();
+      handleClick();
     }
   });
 
