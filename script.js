@@ -4,7 +4,7 @@ let newsFetcher = {
   news_api_key: "<newsapi.org Key>",
   fetchNewsReport: function (searchedCity) {
     document.querySelector(".newsSection").innerHTML = "<h4>Loading....</h4>";
-    let newsUrl = `https://newsapi.org/v2/everything?q=${searchedCity}&sortBy=popularity&apiKey=${news_api_key}`;
+    let newsUrl = `https://newsapi.org/v2/everything?q=${searchedCity}&sortBy=popularity&apiKey=${this.news_api_key}`;
     fetch(newsUrl)
       .then((response) => response.json())
       .then((data) => newsFetcher.loadNews(data));
