@@ -1,9 +1,6 @@
 const weatherInfoCard = document.querySelector(".weather");
 
 let newsFetcher = {
-  randomFnc: () => {
-    console.log("Affan Khamse");
-  },
   news_api_key: "<newsapi.org Key>",
   fetchNewsReport: function (searchedCity) {
     document.querySelector(".newsSection").innerHTML = "<h4>Loading....</h4>";
@@ -79,7 +76,6 @@ function handleClick() {
   }
 
   weather.fetchWeather(searchedCity);
-  newsFetcher.randomFnc();
   newsFetcher.fetchNewsReport(searchedCity);
 }
 
