@@ -4,15 +4,10 @@ let newsFetcher = {
   randomFnc: () => {
     console.log("Affan Khamse");
   },
-
+  news_api_key: "<newsapi.org Key>",
   fetchNewsReport: function (searchedCity) {
-    console.log("Fetching Started");
-<<<<<<< HEAD
     document.querySelector(".newsSection").innerHTML = "<h4>Loading....</h4>";
-    let newsUrl = `https://newsapi.org/v2/everything?q=${searchedCity}&sortBy=popularity&apiKey=403af102e6e94d4f899f8d23cf8cb4e3`;
-=======
-    let newsUrl = `https://newsapi.org/v2/everything?q=${searchedCity}&sortBy=popularity&apiKey=<NEWSAPI.ORG KEY>`;
->>>>>>> d09ca62d3f815dc946e1a18f775a5a14bf547835
+    let newsUrl = `https://newsapi.org/v2/everything?q=${searchedCity}&sortBy=popularity&apiKey=${news_api_key}`;
     fetch(newsUrl)
       .then((response) => response.json())
       .then((data) => newsFetcher.loadNews(data));
@@ -44,7 +39,7 @@ let newsFetcher = {
 };
 
 let weather = {
-  api_key: "<openweatherApp API_KEY>",
+  api_key: "<openweather Api key>",
   fetchWeather: function (city) {
     if (!weatherInfoCard.classList.contains("loading")) {
       weatherInfoCard.classList.add("loading");
