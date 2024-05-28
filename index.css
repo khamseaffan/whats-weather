@@ -4,53 +4,49 @@ body {
   justify-content: center;
   height: 100vh;
   margin: 0;
-  background-color: #222;
+  background: linear-gradient(to right, #1e3c72, #2a5298);
   font-family: "Open Sans", sans-serif;
-  background-image: url("https://source.unsplash.com/1600x900/?landscape");
   overflow: hidden;
 }
-.newsCard h3 {
-  font-size: 25px;
-  font-weight: 700;
-  text-align: center;
-}
+
 .wrapper {
   display: flex;
   flex-direction: row;
-  margin: 0 10px;
+  gap: 20px;
 }
+
 .weatherCard,
 .newsCard,
-.covidCard {
-  background-color: #202020d0;
-  color: white;
+.localEventsCard {
+  background-color: #ffffffd0;
+  color: #333;
   padding: 2em;
-  margin: 1em;
-  border-radius: 30px;
-  width: 420px;
-  max-width: 100%;
+  border-radius: 20px;
+  width: 400px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
   max-height: 75vh;
+  overflow-y: auto;
 }
-.weatherCard {
-  max-height: 320px;
-}
+
 .search {
   display: flex;
   align-items: center;
   justify-content: center;
   padding: 5px;
+  margin-bottom: 20px;
 }
+
 .search > .search-bar {
   border: none;
-  border-radius: 1em;
-  width: calc(100% - 100px);
+  border-radius: 20px;
+  width: calc(100% - 50px);
   height: 2em;
-  margin-right: 8px;
   padding: 5px;
   background-color: #7c7c7c4c;
-  color: whitesmoke;
+  color: #333;
   outline: none;
 }
+
 .search > button {
   border-radius: 50%;
   border: none;
@@ -58,24 +54,26 @@ body {
   width: 40px;
   height: 40px;
   outline: none;
-  color: white;
+  color: #333;
   cursor: pointer;
-  transition: 0.2s ease-in-out;
 }
 
 h1.temp {
   margin: 0;
 }
+
 .flex {
   display: flex;
   align-items: flex-start;
 }
+
 .description {
   font-size: 20px;
   align-content: center;
   margin-left: 5px;
   margin-top: 5px;
 }
+
 .weather.loading {
   visibility: hidden;
   max-height: 20px;
@@ -86,41 +84,59 @@ h1.temp {
   visibility: visible;
   content: "Loading...";
   font-weight: 600;
-  color: white;
+  color: #333;
   position: absolute;
   top: 0;
 }
 
-.newsCard .newsSection .newsTile {
+.newsCard .newsSection .newsTile,
+.localEventsCard .eventsSection .eventsTile {
   display: flex;
   flex-direction: row;
   max-width: 400px;
   justify-content: center;
   align-items: center;
-  color: white;
+  color: #333;
   text-decoration: none;
+  margin-bottom: 10px;
+  border-bottom: 1px solid #ccc;
+  padding-bottom: 10px;
 }
-.newsCard .newsSection .newsTile .content {
+
+.newsCard .newsSection .newsTile .content,
+.localEventsCard .eventsSection .eventsTile .content {
   flex-direction: column;
+  margin-left: 10px;
 }
-.newsCard .newsSection .newsTile .content .title {
+
+.newsCard .newsSection .newsTile .content .title,
+.localEventsCard .eventsSection .eventsTile .content .title {
   font-size: 14px;
   font-weight: 600;
 }
-.newsCard .newsSection .newsTile .content .description {
+
+.newsCard .newsSection .newsTile .content .description,
+.localEventsCard .eventsSection .eventsTile .content .description {
   font-size: 12px;
+  color: #666;
 }
 
-.newsCard .newsSection .newsTile img {
-  width: 150px;
+.newsCard .newsSection .newsTile img,
+.localEventsCard .eventsSection .eventsTile img {
+  width: 100px;
+  height: 70px;
+  object-fit: cover;
+  border-radius: 10px;
 }
 
-.newsCard {
-  -ms-overflow-style: none; /* Edge, Internet Explorer */
-  scrollbar-width: none; /* Firefox */
+.newsCard,
+.localEventsCard {
+  -ms-overflow-style: none; 
+  scrollbar-width: none; 
   overflow-y: scroll;
 }
 
-.newsCard::-webkit-scrollbar {
-  display: none; /* Chrome, Safari, Opera */
+.newsCard::-webkit-scrollbar,
+.localEventsCard::-webkit-scrollbar {
+  display: none; 
 }
