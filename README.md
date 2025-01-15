@@ -4,6 +4,13 @@ A dynamic web application that provides real-time **weather updates**, **news ar
 
 ---
 
+## Live Demo
+
+Check out the live demo here:  
+👉 [What's Weather - Live Demo](whats-weather.netlify.app)
+
+----
+
 ## Features
 
 1. **Real-Time Weather Updates**:
